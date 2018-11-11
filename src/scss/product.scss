@@ -1,0 +1,158 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.product-item {
+    @include flex-center;
+    width: 320px;
+    margin-bottom: 50px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    
+    &__footer {
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        padding-top: 16px;
+        
+        &_out-of-stock {
+            color: $yellow;
+        }
+    }
+        
+    &__buy-link {
+        color: $blue;
+        border-bottom: 1px dashed $blue;
+    }
+}
+
+.product-card {
+    min-width: 320px;
+    height: 480px;
+    background: url(./img/product-card-default.png);
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    overflow: hidden;
+        
+    &:hover {
+        background: url(./img/product-card-defaultHover.png);
+        cursor: pointer;
+        
+        & .product-card__amount {
+            background-color: #2ea8e6;
+        }
+    }
+    
+    &_selected {
+        background-image: url(./img/product-card-selected.png);
+                
+        &:hover {
+            background-image: url(./img/product-card-selectedHover.png);
+            
+            & .product-card__header {
+                font-size: 0px;
+                content:"";
+                padding-bottom: 9px;
+                
+                &::before{
+                    content: "Котэ не одобряет?";
+                    font-size: 16px;
+                }
+            }
+            
+            & .product-card__amount {
+                background-color: #e62e7a;
+            }
+        }
+    }
+       
+    &_disabled {
+        background-image: url(./img/product-card-disabled.png);
+        
+        &:hover {
+            background-image: url(./img/product-card-disabled.png);
+            cursor: default;
+            
+            & .product-card__amount {
+                background-color: #b3b3b3;
+            }
+        }
+    }
+    
+    &__header {
+        padding-left: 50px;
+        padding-top: 25px;
+        padding-bottom: 15px;
+        font-size: 16px;
+        color: $grey-text;
+       
+        &_disabled {
+            color: $grey;
+        }
+    }
+    
+    &__name {
+        font-weight: bold;
+        font-size: 48px;
+        padding-left: 50px;
+        color: #000;
+        
+        &_disabled {
+            color: $grey;
+        }
+    }
+    
+    &__taste{
+        font-weight: bold;
+        font-size: 24px;
+        padding-left: 50px;
+        color: #000;
+        
+        &_disabled {
+            color: $grey;
+        }
+    }
+    
+    &__description {
+        position: absolute;
+        padding-left: 50px;
+        font-size: 16px;
+        padding-top: 15px;
+        color: $grey-text;
+        line-height: 1;
+        
+        &_disabled {
+            color: $grey;
+        }
+    }
+    
+    &__img {
+        top: 88px;
+        left: 15px;
+        position: relative;
+        
+        &_disabled {
+            opacity: .5;
+        }
+    }
+     
+    &__amount {
+        @include flex-center;
+        background-color: $blue;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        color: #fff;
+        line-height: 30px;
+        position: relative;
+        left: 223px;
+        bottom: 10px;
+        overflow: hidden;
+        
+        &_selected {
+            background-color: $red;
+        }
+
+        &_disabled {
+            background-color: $grey;
+        }
+    }
+}
